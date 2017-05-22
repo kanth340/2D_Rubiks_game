@@ -1,0 +1,12 @@
+.rubikSquaresContainer {
+	height: 10em;
+	width: 10em;
+	float: left;
+
+}
+.rubikSquare {
+	height: 2em;
+	width: 2em;
+	border: 0.25em solid #ccc;
+	float: left;
+}
