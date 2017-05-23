@@ -1,5 +1,4 @@
-import React from 'react'
-import HelloWorld from './../containers/HelloWorld';
+import React from 'react';
 import RubikSquaresContainer from './../containers/RubikSquaresContainer';
 
 class App extends React.Component {

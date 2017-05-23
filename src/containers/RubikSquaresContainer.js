@@ -2,6 +2,16 @@ import React from 'react';
 import RubikSquare from './../components/RubikSquare'
 
 export default class RubikSquaresContainer extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			squares: this.formRubikSquaresContainer()
+		}
+	}
+
+	onSwipe(sourceIndex,targetIndex) {
+		
+	}
 	
 	randomColorPicker(colorsArray, colorsCountArray) {
 		let randomColorCode= Math.floor(Math.random() * (colorsArray.length));
@@ -20,7 +30,14 @@ export default class RubikSquaresContainer extends React.Component {
 		let colorsCountArray = [0,0,0,0];
 		for(let i=0;i<16;i++) {
 			let color = this.randomColorPicker(colorsArray,colorsCountArray)
-			squares.push(<RubikSquare key={i} color={color}/>);
+			squares.push(
+				<RubikSquare 
+					key={i} 
+					index={i} 
+					color={color} 
+					onSwipe={this.onSwipe}
+				/>
+			);
 		}
 		return squares;
 	}
