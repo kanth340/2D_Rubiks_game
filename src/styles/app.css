@@ -1,12 +1,51 @@
 .rubikSquaresContainer {
-	height: 10em;
-	width: 10em;
-	float: left;
-
+	height: 26em;
+	width: 26em;
+	margin: 120px auto 0;
 }
+
 .rubikSquare {
-	height: 2em;
-	width: 2em;
-	border: 0.25em solid #ccc;
-	float: left;
+    height: 6em;
+    width: 6em;
+    border: 0.25em solid #ccc;
+    float: left;
+}
+
+.countdown-container {
+    position: absolute;
+		left:50%;
+		margin-left:-50px;
+    top: 10px;
+}
+
+.moves-container {
+	text-align: center;
+	font-size: 2em;
+	text-transform: capitalize;
+	margin: 5px 0;
+	color: #054e86;
+}
+
+.game-over,.time-up {
+	position: absolute;
+  left: 50%;
+  margin-left: -13em;
+  top: 120px;
+  height: 26em;
+  width: 26em;
+  background-color: #fff;
+  opacity: 0.4;
+	text-transform: capitalize;
+	z-index: 1;
+}
+
+.game-over span,.time-up span {
+	position:absolute;
+	color: #000;
+	font-size: 4em;
+	font-weight: bold;
+	top:50%;
+	left:15%;
+	z-index:2;
+	opactiy:1;
 }
