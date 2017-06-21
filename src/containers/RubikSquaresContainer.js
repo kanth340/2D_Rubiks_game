@@ -1,6 +1,7 @@
 import React from 'react';
 import RubikSquare from './../components/RubikSquare';
 import ReactCountdownClock from 'react-countdown-clock';
+import axios from 'axios';
 
 export default class RubikSquaresContainer extends React.Component {
 
@@ -8,6 +9,7 @@ export default class RubikSquaresContainer extends React.Component {
 		super(props);
 		this.RUBIK_CONTAINER_SIZE = 16;
 		this.ROW_LENGTH = Math.sqrt(this.RUBIK_CONTAINER_SIZE);
+		this.startTime = Date.now(),this.endTime = 0;
 		this.state = {
 			squaresColors: this.randomSquareColors(),
 			moves:0,
@@ -103,7 +105,22 @@ export default class RubikSquaresContainer extends React.Component {
 	}
 
 	onTimeUp() {
+
 		this.setState({timeUp:true})
+	}
+
+	postData() {
+		this.endTime = Date.now();
+		let totalTime = Math.floor((this.endTime - this.startTime)/1000);
+		axios.post('http://sample-env.d8kzn4afvm.us-east-1.elasticbeanstalk.com/api/Rubiks', {
+    			UserName: 'usaa',
+    			moves: this.state.moves,
+    			timing: totalTime
+  			})
+  			.then(function (response) {
+   				 console.log("successfully posted");
+  			})
+
 	}
 
 	componentDidMount(){
@@ -128,6 +145,7 @@ export default class RubikSquaresContainer extends React.Component {
 				<div className='moves-container'>
 					moves: {this.state.moves}
 				</div>
+				{this.state.isGameOver || this.state.timeUp ? this.postData() : false}
 				{this.state.isGameOver ? <div className='game-over'><span>good job!!!</span></div>: false}
 				{this.state.timeUp ? <div className='time-up'><span>time up!!!</span></div>: false}
 			</div>

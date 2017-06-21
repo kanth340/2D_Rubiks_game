@@ -7,24 +7,28 @@ export default class RubikSquare extends React.Component {
 		this.index = Number(this.props.index);
 	}
 	onSwipedUp(){
+		console.log(this.index);
 		if([0,1,2,3].indexOf(this.index) === -1) {
 			this.props.onSwipe(this.index,this.index-4);
 		}
 	}
 
 	onSwipedDown(){
+		console.log(this.index);
 		if([12,13,14,15].indexOf(this.index) === -1) {
 			this.props.onSwipe(this.index,this.index+4);
 		}
 	}
 
 	onSwipedLeft(){
+		console.log(this.index);
 		if([0,4,8,12].indexOf(this.index) === -1) {
 			this.props.onSwipe(this.index,this.index-1);
 		}
 	}
 
 	onSwipedRight() {
+		console.log(this.index);
 		if([3,7,11,15].indexOf(this.index) === -1) {
 			this.props.onSwipe(this.index,this.index+1);
 		}
