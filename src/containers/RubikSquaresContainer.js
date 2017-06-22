@@ -14,7 +14,9 @@ export default class RubikSquaresContainer extends React.Component {
 			squaresColors: this.randomSquareColors(),
 			moves:0,
 			isGameOver:false,
-			timeUp:false
+			timeUp:false,
+			loginSuccessful: false,
+			userName:''
 		}
 	}
 
@@ -113,7 +115,7 @@ export default class RubikSquaresContainer extends React.Component {
 		this.endTime = Date.now();
 		let totalTime = Math.floor((this.endTime - this.startTime)/1000);
 		axios.post('http://sample-env.d8kzn4afvm.us-east-1.elasticbeanstalk.com/api/Rubiks', {
-    			UserName: 'usaa',
+    			UserName: this.state.userName,
     			moves: this.state.moves,
     			timing: totalTime
   			})
@@ -127,28 +129,53 @@ export default class RubikSquaresContainer extends React.Component {
 
 	}
 
-	render() {
-		console.log(this.state);
-		return (
+    startGame(){
+        return (
 			<div>
 				<div className='countdown-container'>
 					<ReactCountdownClock seconds={30}
-	                     color="#000"
-	                     size={100}
-											 paused={this.state.isGameOver}
-	                     onComplete={this.onTimeUp.bind(this)}
-					 />
-			 </div>
+										 color="#000"
+										 size={100}
+										 paused={this.state.isGameOver}
+										 onComplete={this.onTimeUp.bind(this)}
+					/>
+				</div>
 				<div className='rubikSquaresContainer'>
-					{this.formRubikSquaresContainer(this.state.squaresColors)}
+                    {this.formRubikSquaresContainer(this.state.squaresColors)}
 				</div>
 				<div className='moves-container'>
 					moves: {this.state.moves}
 				</div>
-				{this.state.isGameOver || this.state.timeUp ? this.postData() : false}
-				{this.state.isGameOver ? <div className='game-over'><span>good job!!!</span></div>: false}
-				{this.state.timeUp ? <div className='time-up'><span>time up!!!</span></div>: false}
+                {this.state.isGameOver || this.state.timeUp ? this.postData() : false}
+                {this.state.isGameOver ? <div className='game-over'><span>good job!!!</span></div>: false}
+                {this.state.timeUp ? <div className='time-up'><span>time up!!!</span></div>: false}
 			</div>
-		);
+        );
+	}
+
+    onStart(e) {
+    	console.log('on start');
+    	e.preventDefault();
+    	this.setState({ loginSuccessful:true,userName: this.refs.userName.value});
+    }
+
+    userLogin() {
+        return (
+			<div className='loginContainer'>
+				<h1> Welcome to 2D Rubik's cube </h1>
+				<div> Swipe either horizontally or vertically and try to bring all colors to one place</div>
+				<div> Please enter your user name and click button to start game</div>
+				<form onSubmit={this.onStart.bind(this)}>
+					<input type="text" ref="userName" />
+					<input type="submit" value="Lets Start the Game"/>
+				</form>
+				
+			</div>
+        );
+    }
+
+	render() {
+		console.log(this.state);
+		return this.state.loginSuccessful === true ? this.startGame() : this.userLogin()
 	}
 }
