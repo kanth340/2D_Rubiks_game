@@ -1,4 +1,4 @@
-.rubikSquaresContainer {
+/*.rubikSquaresContainer {
 	height: 26em;
 	width: 26em;
 	margin: 120px auto 0;
@@ -13,8 +13,8 @@
 
 .countdown-container {
     position: absolute;
-		left:50%;
-		margin-left:-50px;
+	left:50%;
+	margin-left:-50px;
     top: 10px;
 }
 
@@ -35,6 +35,123 @@
   width: 26em;
   background-color: #fff;
   opacity: 0.4;
+	text-transform: capitalize;
+	z-index: 1;
+}
+
+.game-over span,.time-up span {
+	position:absolute;
+	color: #000;
+	font-size: 4em;
+	font-weight: bold;
+	top:50%;
+	left:15%;
+	z-index:2;
+	opactiy:1;
+}
+*/
+body{
+	margin:0;
+	padding:0;
+	background: #eee;
+	font-size: 20px;
+
+}
+
+.mainContainer{
+
+
+}
+.header{
+	height:66px;
+	background-color: #CE4B42;
+	margin: 0px !important;
+	box-shadow: 0px 0px 10px #777;
+}
+.header-content{
+	color: #FFFFFF;
+	text-decoration: none;
+	font-size: 20px;
+	font-weight: bold;
+	padding-top:18px;
+	margin-left:15px;
+}
+.loginContainer{
+	margin:0 10px;
+	text-align: center;
+}
+.loginContainer div{
+	padding-top:10px;
+}
+
+.formContainer-input{
+	width: 50%;
+	height: 35px;
+	border: solid 5px #969696;
+	margin-top:15px;
+	text-align: center;
+	font-size: xx-large;
+}
+
+.startGame {
+	display: block;
+	margin:0 auto;
+	margin-top:15px;
+	background-color: #CE4B42;
+	-webkit-border-radius: 28;
+	-moz-border-radius: 28;
+	border-radius: 28px;
+	font-family: Arial;
+	color: white;
+	font-size: 38px;
+	padding: 10px 20px 10px 20px;
+	text-decoration: none;
+}
+
+.startGame:hover {
+	background: #de604a;
+	text-decoration: none;
+}
+
+
+
+.rubikSquaresContainer {
+	height: 26em;
+	width: 26em;
+	margin: 120px auto 0;
+}
+
+.rubikSquare {
+	height: 6em;
+	width: 6em;
+	border: 0.25em solid #ccc;
+	float: left;
+}
+
+.countdown-container {
+	position: absolute;
+	left:50%;
+	margin-left:-50px;
+	top: 10px;
+}
+
+.moves-container {
+	text-align: center;
+	font-size: 2em;
+	text-transform: capitalize;
+	margin: 5px 0;
+	color: #054e86;
+}
+
+.game-over,.time-up {
+	position: absolute;
+	left: 50%;
+	margin-left: -13em;
+	top: 120px;
+	height: 26em;
+	width: 26em;
+	background-color: #fff;
+	opacity: 0.4;
 	text-transform: capitalize;
 	z-index: 1;
 }

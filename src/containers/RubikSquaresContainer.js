@@ -160,7 +160,7 @@ export default class RubikSquaresContainer extends React.Component {
     }
 
     userLogin() {
-        return (
+        /*return (
 			<div className='loginContainer'>
 				<h1> Welcome to 2D Rubik's cube </h1>
 				<div> Swipe either horizontally or vertically and try to bring all colors to one place</div>
@@ -171,6 +171,22 @@ export default class RubikSquaresContainer extends React.Component {
 				</form>
 				
 			</div>
+        );*/
+        return (
+            <div className="mainContainer">
+                <div className="header">
+                    <div className ="header-content"> Welcome to 2D Rubik's cube </div>
+                </div>
+                <div className='loginContainer'>
+                    <div> Swipe either horizontally or vertically and try to bring all colors to one place</div>
+                    <div> Please enter your user name and click button to start game</div>
+                    <form className="formContainer" onSubmit={this.onStart.bind(this)}>
+                        <input className="formContainer-input" type="text" ref="userName" placeholder="Your name"/>
+                        <input className='startGame' type="submit" value="Start the Game"/>
+                    </form>
+
+                </div>
+            </div>
         );
     }
 
