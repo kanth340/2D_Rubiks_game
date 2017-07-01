@@ -2,11 +2,10 @@ const path = require('path')
 const webpack = require('webpack')
 
 module.exports = {
-  devtool: 'eval',
+  devtool: 'source-map',
 
   entry: [
-    'webpack-hot-middleware/client',
-    './src/index'
+    './index'
   ],
 
   output: {
@@ -16,16 +15,26 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      minimize: true,
+      compress: {
+        warnings: false
+      }
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    })
   ],
 
   module: {
     loaders: [
       { test: /\.js?$/,
         loader: 'babel',
-        exclude: path.join(__dirname, 'node_modules') },
-      {
+        exclude: /node_modules/ },
+        {
       test: /\.css$/,
       loader:"style-loader!css-loader",
       exclude: /node_modules/,
