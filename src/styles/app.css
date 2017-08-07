@@ -1,9 +1,17 @@
 body{
 	margin:0;
 	padding:0;
-	background: #eee;
+	background-color: linen;
 	font-size: 20px;
+	min-height:100%;
+}
 
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+      select,
+      textarea,
+      input {
+        font-size: 32px !important;
+      }
 }
 
 .mainContainer{
@@ -20,7 +28,7 @@ body{
 }
 
 .userName{
-	width: 150px;	
+	width: 150px;
 }
 
 .header{
@@ -173,6 +181,7 @@ body{
     text-decoration: none;
     cursor: pointer;
 }
+
 table.resultsContainer{
 display: -webkit-flex;
 justify-content: center;
@@ -185,77 +194,69 @@ border: 3px solid green;
 
 /** START : CSS CHANGES FOR WINNERS DISPLAY**/
 
+
+
 .results-container{
 	margin:10px auto;
-	width:70%;
+	width:90%;
 	background-color:linen;
 }
 
 .winners{
 	display:flex;
 	justify-content: space-between;
-	padding:20px;
-	align-items: flex-end;	
+	align-items: flex-end;
 	flex-wrap:wrap;
-	
+
 }
 
 .winners-banner{
-	flex-basis:100%;	
+	flex-basis:100%;
 	background-image: url("./winners.png");
 	height: 200px;
-    margin-bottom: 80px;
+    margin-bottom: 100px;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
+    background-position: center;
+}
+
+.winners-list{
+	background-image: url("./star.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+    height: 150px;
     background-position: center;
 }
 
 .winners-first{
-	flex:1;	
-	margin:2px;
-	text-align: center;	
-	
-	
+	flex:1;
+	text-align: center;
+	position: relative;
+    top: -53px;
 }
-.winners-image{
-	background-image: url("./star.png");
-    height: 20%;
-    width: 20%;
-    background-size: contain;
-    position: absolute;
-    background-repeat: no-repeat;
-    background-position: center 0px;
-}
-
 
 .winners-second{
 	flex:1;
-	
-	
 	margin:2px;
 	text-align: center;
-	
 }
+
 .winners-third{
 	flex:1;
-	
-	margin:2px;
 	text-align: center;
 }
 
 .winners-names{
-	position: absolute;
-    margin-top: -40px;
     font-weight: bolder;
     font-size: 1.5em;
-	width: 20%;
+	position: relative;
+    top: -35px;
 }
 .winners-position{
 	font-size:2em;
 	font-weight:bolder;
-	position: absolute;
-	width: 20%;
-	padding-top: 35px;
+	position: relative;
+    top: 15px;
 }
 
 
@@ -283,8 +284,8 @@ border: 3px solid green;
     background-color: lightblue;
 }
 .row{
-	display: flex;    
-    border-top: 1px solid;    
+	display: flex;
+    border-top: 1px solid;
     border-right: 1px solid;
     border-left: 1px solid;
 	text-align:center;
@@ -318,13 +319,13 @@ border: 3px solid green;
 	padding: 8px 0;
 }
 .leaderBoard{
-	margin-top:30%
+	margin-top: 32px;
 }
 
 /** START ::: CSS for winners table display**/
 
-/* Cells in even rows (2,4,6...) are one color */        
-.row:nth-child(even){ background-color: beige; }   
+/* Cells in even rows (2,4,6...) are one color */
+.row:nth-child(even){ background-color: beige; }
 
-/* Cells in odd rows (1,3,5...) are another (excludes header cells)  */        
-.row:nth-child(odd){ background-color: blanchedalmond; }  
+/* Cells in odd rows (1,3,5...) are another (excludes header cells)  */
+.row:nth-child(odd){ background-color: blanchedalmond; }

@@ -173,8 +173,8 @@ export default class RubikSquaresContainer extends React.Component {
 				});
 		
 		
-		}.bind(this),30000);
-		let secondsElapsed = 30;
+		}.bind(this),20000);
+		let secondsElapsed = 20;
 		let timer = setInterval(() => {
 			this.setState({buttonText: `Wait for ${secondsElapsed--} secs`});
 		}, 1000);
@@ -217,9 +217,9 @@ export default class RubikSquaresContainer extends React.Component {
 		{this.gameResults}
 		<div className="winners">
 		<div className="winners-banner"> </div>
-		{this.state.results.length >1?  <div className="winners-second"> <div className="winners-image"></div> <div className="winners-names">{this.state.results[1].UserName}</div> <div className="winners-position">2</div></div>: null}
-		{this.state.results.length >0? <div className="winners-first"> <div className="winners-image"></div> <div className="winners-names">{this.state.results[0].UserName}</div><div className="winners-position">1</div> </div>: null}
-			{this.state.results.length >2? <div className="winners-third"> <div className="winners-image"></div><div className="winners-names">{this.state.results[2].UserName}</div><div className="winners-position">3</div> </div>: null}
+		{this.state.results.length >1?  <div className=" winners-list winners-second">  <div className="winners-names">{this.state.results[1].UserName}</div> <div className="winners-position">2</div></div>: null}
+		{this.state.results.length >0? <div className=" winners-list winners-first"> <div className="winners-names">{this.state.results[0].UserName}</div><div className="winners-position">1</div> </div>: null}
+			{this.state.results.length >2? <div className="winners-list winners-third"><div className="winners-names">{this.state.results[2].UserName}</div><div className="winners-position">3</div> </div>: null}
 		</div>
 	<div className="leaderBoard">	
 		
